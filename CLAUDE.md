@@ -127,3 +127,62 @@ Users install this marketplace with:
 
 - `README.md` - Installation and quick start
 - `CONTRIBUTING.md` - Contribution guidelines
+
+## Stele Shared Memory Protocol
+
+**Scope:** `cc-marketplace` | **Type:** monorepo
+
+### Hybrid Storage Strategy
+
+Stele provides two complementary memory systems. Use both.
+
+- **Flat Memory** — Operational facts, decisions, conventions, troubleshooting notes. Scoped key-value prose entries.
+- **Knowledge Graph** — Structural relationships between entities (plugins, components, people, dependencies).
+
+**Rule of thumb:** If it's a **fact or note** → flat memory. If it's a **thing with relationships** → knowledge graph.
+
+| Use flat memories for...            | Use knowledge graph for...          |
+| ----------------------------------- | ----------------------------------- |
+| Decisions and their rationale       | Architecture and component maps     |
+| Coding conventions and style rules  | People and ownership                |
+| Troubleshooting steps               | Dependencies between services       |
+| External references and links       | Data flow and call chains           |
+| Onboarding notes                    | Entity facts (observations)         |
+
+### On Boot (every task start)
+
+Pull the latest shared state. Do not assume you know the current state.
+
+```
+recall_memories(scope: "cc-marketplace")
+search_nodes(query: "*", scope: "cc-marketplace")
+```
+
+### Update-on-Change Protocol (Autonomous)
+
+Update remote memory immediately when any of the following change:
+
+- **Contract Changes** — API signatures, env vars, shared interfaces → tag `#contract`, `#breaking`
+- **Lessons Learned** — Non-obvious bug fixes → tag `#wisdom`
+- **Relationship Discovery** — New dependencies between components → `create_relations`
+
+### Tagging Convention
+
+| Tag          | Meaning                                                |
+| ------------ | ------------------------------------------------------ |
+| `#active`    | Currently implemented and enforced rules               |
+| `#todo`      | Technical debt or pending migrations                   |
+| `#contract`  | Inter-service API definitions and shared interfaces    |
+| `#breaking`  | Changes that require other agents/services to update   |
+| `#wisdom`    | Non-obvious technical discoveries and gotchas          |
+| `#conflict`  | Local rule that conflicts with a workspace-level rule  |
+| `#cross-pkg` | Cross-package concerns                                 |
+| `#build`     | Build system and CI changes                            |
+| `#shared`    | Shared module updates                                  |
+
+### Scope Guide
+
+| Scope                       | What it covers              |
+| --------------------------- | --------------------------- |
+| `cc-marketplace`            | Workspace-wide standards    |
+| `cc-marketplace/plugins`    | Plugin-specific knowledge   |

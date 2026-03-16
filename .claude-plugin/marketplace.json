@@ -18,6 +18,17 @@
       },
       "source": "./plugins/python-dev",
       "category": "development"
+    },
+    {
+      "name": "changelog",
+      "description": "Auto-generate CHANGELOG.md entries from git history using Keep a Changelog format",
+      "version": "1.0.0",
+      "author": {
+        "name": "Tasanakorn Phaipool",
+        "email": "tasanakorn@gmail.com"
+      },
+      "source": "./plugins/changelog",
+      "category": "development"
     }
   ]
 }
