@@ -37,6 +37,15 @@ Modern Python development with uv tooling, PEP8 standards, and minimal setup.
 
 See [plugins/python-dev/README.md](plugins/python-dev/README.md) for details.
 
+### xquik-x-data
+
+Xquik REST API and remote MCP workflows for X data, exports, monitoring, and webhooks.
+
+- **Agent Skill**: `xquik-x-data` - Route X data tasks to current Xquik docs, OpenAPI, REST API, and remote MCP setup
+- **Features**: REST API guidance, remote MCP configuration, exports, monitoring, webhooks, and approval-gated write planning
+
+See [plugins/xquik-x-data/README.md](plugins/xquik-x-data/README.md) for details.
+
 ## Development Setup
 
 For testing and developing plugins in this marketplace:
